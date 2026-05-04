@@ -1,20 +1,17 @@
-from sqlalchemy.orm import Session
-from app.models.user import User
-from app.core.security import hash_password
+from app.core.config import settings
 
 def seed_users(db: Session):
-    existing = db.query(User).filter(User.email == "admin@example.com").first()
+    email = settings.DEFAULT_USER_EMAIL
+    password = settings.DEFAULT_USER_PASSWORD
 
+    existing = db.query(User).filter(User.email == email).first()
     if existing:
-        print("✅ Default user already exists")
         return
 
     user = User(
-        email="admin@example.com",
-        hashed_password=hash_password("admin123")
+        email=email,
+        hashed_password=hash_password(password)
     )
 
     db.add(user)
     db.commit()
-
-    print("🚀 Default user created: admin@example.com / admin123")
