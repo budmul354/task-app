@@ -20,3 +20,8 @@ def read_tasks(db: Session = Depends(get_db)):
 @router.post("/tasks")
 def create_task(task: TaskCreate, db: Session = Depends(get_db)):
     return task_service.create_task(db, task.title)
+
+@router.delete("/tasks/{task_id}")
+def delete_task(task_id: int, db: Session = Depends(get_db)):
+    task_service.delete_task(db, task_id)
+    return {"message": "deleted"}
