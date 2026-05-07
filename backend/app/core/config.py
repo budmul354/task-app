@@ -1,3 +1,4 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
@@ -8,7 +9,9 @@ class Settings(BaseSettings):
     )
 
     DATABASE_URL: str = "postgresql+psycopg2://budim@localhost:5434/task_app"
-    SECRET_KEY: str = "dev-secret"
+    SECRET_KEY: str = Field(min_length=32)
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    ALLOWED_ORIGINS: str = "*"
     DEFAULT_USER_EMAIL: str = "admin@example.com"
     DEFAULT_USER_PASSWORD: str = "admin123"
 
