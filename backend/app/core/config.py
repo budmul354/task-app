@@ -1,7 +1,15 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "sqlite:///./test.db"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
+    DATABASE_URL: str = "postgresql+psycopg2://budim@localhost:5434/task_app"
     SECRET_KEY: str = "dev-secret"
+    DEFAULT_USER_EMAIL: str = "admin@example.com"
+    DEFAULT_USER_PASSWORD: str = "admin123"
 
 settings = Settings()
