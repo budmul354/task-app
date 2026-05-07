@@ -26,3 +26,23 @@ cd backend
 ```
 
 The API accepts JSON login at `POST /login` and Bearer-token auth for `/tasks`.
+
+## Frontend Setup
+
+Open `frontend/index.html` in a browser after the backend is running.
+
+For local development, sign in with the default user configured in `backend/.env`:
+
+```text
+admin@example.com
+admin123
+```
+
+The frontend uses `http://127.0.0.1:8000` by default. To point it at another API host, define `window.TASK_APP_API_URL` before loading `frontend/app.js`.
+
+Before a public launch:
+
+- Change the seeded default email/password.
+- Set a strong `SECRET_KEY`.
+- Replace `ALLOWED_ORIGINS=*` with the deployed frontend origin.
+- Host the frontend over HTTP(S), not from a local file path.

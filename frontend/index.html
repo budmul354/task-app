@@ -1,16 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
 </head>
 <body>
-    <h1>Task App</h1>
+    <main class="app-shell">
+        <section class="panel" id="authPanel">
+            <h1>Task App</h1>
 
-    <input id="taskInput" />
-    <button onclick="addTask()">Add</button>
+            <form id="loginForm" class="stack">
+                <label for="emailInput">Email</label>
+                <input id="emailInput" name="email" type="email" autocomplete="username" placeholder="admin@example.com" required />
 
-    <ul id="taskList"></ul>
+                <label for="passwordInput">Password</label>
+                <input id="passwordInput" name="password" type="password" autocomplete="current-password" required />
 
-    <script src="app.js"></script>
+                <button id="loginButton" type="submit">Sign in</button>
+            </form>
+        </section>
+
+        <section class="panel" id="taskPanel" hidden>
+            <header class="task-header">
+                <div>
+                    <h1>Task App</h1>
+                    <p id="userLabel" class="muted"></p>
+                </div>
+                <button id="logoutButton" class="secondary" type="button">Sign out</button>
+            </header>
+
+            <form id="taskForm" class="task-form">
+                <input id="taskInput" name="title" type="text" maxlength="200" placeholder="New task title" required />
+                <button id="addButton" type="submit">Add</button>
+            </form>
+
+            <ul id="taskList" class="task-list"></ul>
+            <p id="emptyState" class="empty" hidden>No tasks yet.</p>
+        </section>
+
+        <p id="statusMessage" class="status" role="status" aria-live="polite"></p>
+    </main>
 </body>
 </html>
