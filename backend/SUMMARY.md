@@ -54,7 +54,8 @@ Each task belongs to a user through `owner_id`, and task queries are filtered by
 
 ## Configuration
 
-Settings are loaded from `.env` by `pydantic-settings`.
+Settings are loaded from `.env` and `.env.local` by `pydantic-settings`.
+Values in `.env.local` override matching values from `.env`.
 
 Important values:
 
