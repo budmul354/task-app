@@ -3,5 +3,9 @@ version: "3.9"
 services:
   backend:
     build: .
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://budim@host.docker.internal:5434/task_app
     ports:
       - "8000:8000"

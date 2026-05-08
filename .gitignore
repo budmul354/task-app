@@ -4,3 +4,8 @@ __pycache__/
 .env
 *.db
 *.db-journal
+
+.env
+*.db
+*.db-journal
+venv/
