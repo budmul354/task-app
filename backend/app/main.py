@@ -33,5 +33,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/")
+def root() -> dict[str, str]:
+    return {"status": "ok", "message": "Task app backend is running"}
+
 app.include_router(auth_router)
 app.include_router(task_router)
